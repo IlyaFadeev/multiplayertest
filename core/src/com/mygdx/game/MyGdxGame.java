@@ -1,11 +1,9 @@
 package com.mygdx.game;
 
-import client.GameClient;
-import client.SynchronousClient;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 /**
@@ -13,50 +11,24 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
  */
 public class MyGdxGame extends Game {
 
-    private static GameClient client;
-
     private static MyGdxGame instance = new MyGdxGame();
-    private Warrior first;
+    private Warrior warrior;
     private Stage stage;
     private long speed = 1000000;
 
-
-
     public void create()
     {
-        //Создаем клиент
-        client = new SynchronousClient();
-
-        //Подключаемся к серверу
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                client.connect("localhost", 5555);
-            }
-        }).start();
-
-
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
-        first = new Warrior();
-
-        first.setName("first");
-       /* Warrior second = new Warrior();
-        second.setName("second");
-        Warrior third = new Warrior();
-        third.setName("third"); */
-
-
-        stage.addActor(first);
-        stage.setKeyboardFocus(first);
+        warrior = new Warrior(new Texture("warrior.png"));
+        stage.addActor(warrior);
+        stage.setKeyboardFocus(warrior);
     }
 
     public static MyGdxGame getInstance() {
         return instance;
     }
-    public static GameClient getClient() {
-        return client;
-    }
+
 
     private MyGdxGame(){}
     public void render()
@@ -65,9 +37,5 @@ public class MyGdxGame extends Game {
         stage.draw();
         stage.act(Gdx.graphics.getDeltaTime());
 
-    }
-
-    public void addActor(Actor actor) {
-        this.stage.addActor(actor);
     }
 }
