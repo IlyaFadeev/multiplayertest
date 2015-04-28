@@ -9,4 +9,5 @@ public interface EntityPool extends Iterable<Entity> {
     public Entity get(int index);
     public void set(int index , Entity entity);
     public Entity getEntityByName(String name);
+    public boolean contains(Entity entity);
 }

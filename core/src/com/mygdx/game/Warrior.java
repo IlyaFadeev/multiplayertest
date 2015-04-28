@@ -1,16 +1,13 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import core.implementations.PlayerProxy;
 import core.interfaces.PlayerEntity;
+import core.interfaces.observer.Listener;
 
-import java.awt.event.InputEvent;
 import java.util.UUID;
 
 /**
@@ -20,6 +17,7 @@ public class Warrior extends Actor  {
 
     private Texture toDraw;
     private PlayerEntity playerEntity;
+
 
     Actor warrior = this;
     class KeysListener extends InputListener {
@@ -54,9 +52,11 @@ public class Warrior extends Actor  {
 
 
     public Warrior() {
-       // this.setName(UUID.randomUUID().toString());
+        this.setName(UUID.randomUUID().toString());
 
+       // this.setName("second");
         this.playerEntity = new PlayerProxy(this);
+        this.playerEntity.addListener((Listener) MyGdxGame.getClient()); //Добавляем слушателя
         this.addListener(new KeysListener());
         this.toDraw = new Texture("warrior.png");
         setSize(50, 50);

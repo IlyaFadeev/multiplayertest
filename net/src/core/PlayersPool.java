@@ -44,7 +44,18 @@ public class PlayersPool implements EntityPool {
                 return entity;
             }
         }
-        return null;
+        throw  new NoSuchElementException();
+    }
+
+
+    @Override
+    public boolean contains(Entity entity) {
+        for(Entity currEntity : players) {
+            if (currEntity.getName().equals(entity.getName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

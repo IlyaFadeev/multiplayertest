@@ -4,14 +4,9 @@ import client.GameClient;
 import client.SynchronousClient;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.Interpolation;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
 /**
  * Created by Ilya on 28.04.2015.
@@ -21,7 +16,7 @@ public class MyGdxGame extends Game {
     private static GameClient client;
 
     private static MyGdxGame instance = new MyGdxGame();
-    private Warrior warrior;
+    private Warrior first;
     private Stage stage;
     private long speed = 1000000;
 
@@ -43,9 +38,17 @@ public class MyGdxGame extends Game {
 
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
-        warrior = new Warrior();
-        stage.addActor(warrior);
-        stage.setKeyboardFocus(warrior);
+        first = new Warrior();
+
+        first.setName("first");
+       /* Warrior second = new Warrior();
+        second.setName("second");
+        Warrior third = new Warrior();
+        third.setName("third"); */
+
+
+        stage.addActor(first);
+        stage.setKeyboardFocus(first);
     }
 
     public static MyGdxGame getInstance() {
@@ -62,5 +65,9 @@ public class MyGdxGame extends Game {
         stage.draw();
         stage.act(Gdx.graphics.getDeltaTime());
 
+    }
+
+    public void addActor(Actor actor) {
+        this.stage.addActor(actor);
     }
 }

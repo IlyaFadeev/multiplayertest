@@ -1,10 +1,12 @@
 package core.interfaces.root;
 
 
+import java.io.Serializable;
+
 /**
  * Интерфейс содержит фукнциональность единую для всех сущностей
  */
-public interface Entity {
+public interface Entity extends Serializable{
     public String getName();
     public float getX();
     public float getY();

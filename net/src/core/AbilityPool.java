@@ -38,6 +38,11 @@ public class AbilityPool implements EntityPool {
     }
 
     @Override
+    public boolean contains(Entity entity) {
+        return false;
+    }
+
+    @Override
     public Iterator<Entity> iterator() {
         return null;
     }
