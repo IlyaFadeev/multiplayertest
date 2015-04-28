@@ -33,6 +33,11 @@ public class AbilityPool implements EntityPool {
     }
 
     @Override
+    public Entity getEntityByName(String name) {
+        return null;
+    }
+
+    @Override
     public Iterator<Entity> iterator() {
         return null;
     }

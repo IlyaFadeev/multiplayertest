@@ -11,6 +11,7 @@ import java.util.Iterator;
 public class PlayersPool implements EntityPool {
 
     private ArrayList<Entity> players;
+
     public PlayersPool() {
         this.players = new ArrayList<Entity>();
     }
@@ -33,6 +34,11 @@ public class PlayersPool implements EntityPool {
     @Override
     public void set(int index , Entity entity) {
         this.players.set(index , entity);
+    }
+
+    @Override
+    public Entity getEntityByName(String name) {
+        return null;
     }
 
     @Override

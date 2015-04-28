@@ -31,6 +31,16 @@ public class Ability implements AbilityEntity {
         return y;
     }
 
+    @Override
+    public void updateX(float x) {
+
+    }
+
+    @Override
+    public void updateY(float y) {
+
+    }
+
     public void setY(float y) {
         this.y = y;
     }

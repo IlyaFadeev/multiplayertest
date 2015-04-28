@@ -1,5 +1,7 @@
 package com.mygdx.game;
 
+import client.GameClient;
+import client.SynchronousClient;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -16,53 +18,36 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
  */
 public class MyGdxGame extends Game {
 
+    private static GameClient client;
+
     private static MyGdxGame instance = new MyGdxGame();
-    Warrior warrior;
-    Stage stage;
-    long speed = 1000000;
-
-    class KeysListener extends InputListener {
+    private Warrior warrior;
+    private Stage stage;
+    private long speed = 1000000;
 
 
-        @Override
-        public boolean keyTyped (InputEvent event, char character) {
-            float x = event.getListenerActor().getX();
-            float y = event.getListenerActor().getY();
-
-            switch(character) {
-                case 'a':
-                    x = warrior.getX() - 15;
-                    warrior.addAction(Actions.moveTo(x, warrior.getY(), 0.1f, Interpolation.linear));
-                    break;
-                case 'd':
-                    x = warrior.getX() + 15;
-                    warrior.addAction(Actions.moveTo(x, warrior.getY(), 0.1f, Interpolation.linear));
-                    break;
-                case 'w':
-                    y = warrior.getY() + 15;
-                    warrior.addAction(Actions.moveTo(warrior.getX(), y, 0.1f, Interpolation.linear));
-                    break;
-                case 's':
-                    y  = warrior.getY() - 15;
-                    warrior.addAction(Actions.moveTo(warrior.getX(), y, 0.1f, Interpolation.linear));
-                    break;
-            }
-            return false;
-        }
-    }
 
     public void create()
     {
+        //Создаем клиент
+        client = new SynchronousClient();
+
+        //Подключаемся к серверу
+        client.connect("localhost" , 5555);
+
+
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
         warrior = new Warrior(new Texture("warrior.png"));
-        warrior.addListener(new KeysListener());
         stage.addActor(warrior);
         stage.setKeyboardFocus(warrior);
     }
 
     public static MyGdxGame getInstance() {
         return instance;
+    }
+    public static GameClient getClient() {
+        return client;
     }
 
     private MyGdxGame(){}

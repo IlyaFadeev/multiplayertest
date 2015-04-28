@@ -8,4 +8,5 @@ public interface EntityPool extends Iterable<Entity> {
     public void remove(int index);
     public Entity get(int index);
     public void set(int index , Entity entity);
+    public Entity getEntityByName(String name);
 }
