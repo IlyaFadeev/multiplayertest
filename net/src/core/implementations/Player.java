@@ -4,7 +4,7 @@ import core.interfaces.AbilityEntity;
 import core.interfaces.PlayerEntity;
 import java.util.List;
 
-
+//FF
 public class Player implements PlayerEntity {
 
     List<Ability> abilities;
