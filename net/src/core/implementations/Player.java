@@ -4,13 +4,16 @@ import core.interfaces.AbilityEntity;
 import core.interfaces.PlayerEntity;
 import java.util.List;
 
-//FF
 public class Player implements PlayerEntity {
 
     List<Ability> abilities;
     private String name;
     private float x;
     private float y;
+
+    public Player(String name) {
+        this.name = name;
+    }
 
     @Override
     public String getName() {
@@ -41,11 +44,6 @@ public class Player implements PlayerEntity {
 
     public void setAbilities(List<Ability> abilities) {
         this.abilities = abilities;
-    }
-
-
-    public Player(String name) {
-        this.name = name;
     }
 
 
