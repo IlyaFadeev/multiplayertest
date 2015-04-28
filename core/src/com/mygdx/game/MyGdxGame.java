@@ -25,16 +25,16 @@ public class MyGdxGame extends Game {
 
             switch(keycode) {
                 case Input.Keys.LEFT:
-                    x -= 1;
+                    x -= 5;
                     break;
                 case Input.Keys.RIGHT:
-                    x += 1;
+                    x += 5;
                     break;
                 case Input.Keys.UP:
-                    y += 1;
+                    y += 5;
                     break;
                 case Input.Keys.DOWN:
-                    y -= 1;
+                    y -= 5;
                     break;
             }
             event.getListenerActor().setPosition(x, y);
@@ -45,7 +45,7 @@ public class MyGdxGame extends Game {
     {
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
-        warrior = new Warrior(new Texture("C:\\Users\\Ilya\\Documents\\multiplayertest\\warrior.png"));
+        warrior = new Warrior(new Texture("warrior.png"));
         warrior.addListener(new KeysListener());
         stage.addActor(warrior);
         stage.setKeyboardFocus(warrior);
