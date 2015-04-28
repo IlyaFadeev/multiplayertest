@@ -19,21 +19,21 @@ public class MyGdxGame extends Game {
     Stage stage;
     class KeysListener extends InputListener {
         @Override
-        public boolean keyDown (InputEvent event, int keycode) {
+        public boolean keyTyped (InputEvent event, char character) {
             float x = event.getListenerActor().getX();
             float y = event.getListenerActor().getY();
 
-            switch(keycode) {
-                case Input.Keys.LEFT:
+            switch(character) {
+                case 'a':
                     x -= 5;
                     break;
-                case Input.Keys.RIGHT:
+                case 'd':
                     x += 5;
                     break;
-                case Input.Keys.UP:
+                case 'w':
                     y += 5;
                     break;
-                case Input.Keys.DOWN:
+                case 's':
                     y -= 5;
                     break;
             }
