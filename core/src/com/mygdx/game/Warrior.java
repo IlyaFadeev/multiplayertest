@@ -20,7 +20,7 @@ public class Warrior extends Actor{
     {
         this.toDraw = toDraw;
         setSize(50, 50);
-        setPosition(10, 10);
+        setPosition(50, 50);
     }
 
     public void draw(Batch batch, float parentAlpha)
