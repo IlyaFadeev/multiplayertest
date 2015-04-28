@@ -10,4 +10,5 @@ public interface Entity {
     public float getY();
     public void updateX(float x);
     public void updateY(float y);
+    public void updateXY(float x , float y);
 }

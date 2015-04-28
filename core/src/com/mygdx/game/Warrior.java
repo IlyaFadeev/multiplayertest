@@ -11,6 +11,7 @@ import core.implementations.PlayerProxy;
 import core.interfaces.PlayerEntity;
 
 import java.awt.event.InputEvent;
+import java.util.UUID;
 
 /**
  * Created by Ilya on 28.04.2015.
@@ -31,34 +32,33 @@ public class Warrior extends Actor  {
             switch(character) {
                 case 'a':
                     x = warrior.getX() - offset;
-                    warrior.addAction(Actions.moveTo(x, warrior.getY(), 0.1f, Interpolation.linear));
+                    playerEntity.updateXY(x , getY());
                     break;
                 case 'd':
                     x = warrior.getX() + offset;
-                    warrior.addAction(Actions.moveTo(x, warrior.getY(), 0.1f, Interpolation.linear));
+                    playerEntity.updateXY(x, getY());
                     break;
                 case 'w':
                     y = warrior.getY() + offset;
-                    warrior.addAction(Actions.moveTo(warrior.getX(), y, 0.1f, Interpolation.linear));
+                    playerEntity.updateXY(getX() , y);
                     break;
                 case 's':
                     y  = warrior.getY() - offset;
-                    warrior.addAction(Actions.moveTo(warrior.getX(), y, 0.1f, Interpolation.linear));
+                    playerEntity.updateXY(getX(), y);
                     break;
             }
             return false;
         }
     }
 
-    private void updateEntity() {
-        this.playerEntity.updateX(getX());
-        this.playerEntity.updateY(getY());
-    }
 
-    public Warrior(Texture toDraw) {
+
+    public Warrior() {
+       // this.setName(UUID.randomUUID().toString());
+
         this.playerEntity = new PlayerProxy(this);
         this.addListener(new KeysListener());
-        this.toDraw = toDraw;
+        this.toDraw = new Texture("warrior.png");
         setSize(50, 50);
         setPosition(50, 50);
     }

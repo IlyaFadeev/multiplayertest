@@ -1,6 +1,8 @@
 package core.implementations;
 
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import core.interfaces.AbilityEntity;
 import core.interfaces.PlayerEntity;
 import java.util.List;
@@ -50,6 +52,14 @@ public class PlayerProxy implements PlayerEntity {
     public void updateY(float y) {
         this.y = y;
     }
+
+    @Override
+    public void updateXY(float x, float y) {
+        this.x = x;
+        this.y = y;
+        actor.addAction(Actions.moveTo(x, y, 0.1f, Interpolation.linear));
+    }
+
 
     public void setY(float y) {
         this.y = y;

@@ -33,12 +33,17 @@ public class MyGdxGame extends Game {
         client = new SynchronousClient();
 
         //Подключаемся к серверу
-        client.connect("localhost" , 5555);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                client.connect("localhost", 5555);
+            }
+        }).start();
 
 
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
-        warrior = new Warrior(new Texture("warrior.png"));
+        warrior = new Warrior();
         stage.addActor(warrior);
         stage.setKeyboardFocus(warrior);
     }

@@ -4,6 +4,7 @@ import core.interfaces.root.Entity;
 import core.interfaces.root.EntityPool;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Класс представляет собой пул сущностей игроков
@@ -38,6 +39,11 @@ public class PlayersPool implements EntityPool {
 
     @Override
     public Entity getEntityByName(String name) {
+        for(Entity entity : players) {
+            if (entity.getName().equals(name)) {
+                return entity;
+            }
+        }
         return null;
     }
 
