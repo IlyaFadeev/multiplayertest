@@ -17,7 +17,7 @@ public class SynchronousClient implements GameClient {
     public SynchronousClient() {
       playersPool  = new PlayersPool();
     }
-
+//f
     @Override
     public void connect(String ipAdress, int port) {
 
