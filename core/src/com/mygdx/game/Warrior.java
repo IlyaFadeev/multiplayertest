@@ -11,11 +11,9 @@ import java.awt.event.InputEvent;
 /**
  * Created by Ilya on 28.04.2015.
  */
-public class Warrior extends Actor{
+public class Warrior extends Actor {
+
     private Texture toDraw;
-
-
-
     public Warrior(Texture toDraw)
     {
         this.toDraw = toDraw;
@@ -25,6 +23,7 @@ public class Warrior extends Actor{
 
     public void draw(Batch batch, float parentAlpha)
     {
+
         batch.setColor(getColor());
         batch.draw(toDraw, getX(), getY(), getWidth(), getHeight());
     }

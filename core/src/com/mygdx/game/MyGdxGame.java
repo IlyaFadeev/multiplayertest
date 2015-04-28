@@ -22,6 +22,8 @@ public class MyGdxGame extends Game {
     long speed = 1000000;
 
     class KeysListener extends InputListener {
+
+
         @Override
         public boolean keyTyped (InputEvent event, char character) {
             float x = event.getListenerActor().getX();
@@ -48,6 +50,7 @@ public class MyGdxGame extends Game {
             return false;
         }
     }
+
     public void create()
     {
         stage = new Stage();
@@ -57,8 +60,6 @@ public class MyGdxGame extends Game {
         stage.addActor(warrior);
         stage.setKeyboardFocus(warrior);
     }
-
-
 
     public static MyGdxGame getInstance() {
         return instance;
