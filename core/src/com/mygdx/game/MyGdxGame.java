@@ -1,5 +1,6 @@
 package com.mygdx.game;
 
+import client.Client;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -11,6 +12,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
  */
 public class MyGdxGame extends Game {
 
+
+
     private static MyGdxGame instance = new MyGdxGame();
     private Warrior warrior;
     private Stage stage;
@@ -18,6 +21,7 @@ public class MyGdxGame extends Game {
 
     public void create()
     {
+
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
         warrior = new Warrior(new Texture("warrior.png"));
@@ -33,6 +37,8 @@ public class MyGdxGame extends Game {
     private MyGdxGame(){}
     public void render()
     {
+
+
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stage.draw();
         stage.act(Gdx.graphics.getDeltaTime());

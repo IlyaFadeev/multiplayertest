@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import interfaces.Listener;
 
 /**
  * Created by Ilya on 28.04.2015.
@@ -15,6 +16,10 @@ public class Warrior extends Actor  {
     private Texture toDraw;
 
     Actor warrior = this;
+
+
+
+
     class KeysListener extends InputListener {
         @Override
         public boolean keyTyped (com.badlogic.gdx.scenes.scene2d.InputEvent event, char character) {
